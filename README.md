@@ -1,17 +1,59 @@
 # myportofolio_mobile
 
-A new Flutter project.
+## Tugas 7
+AI Disclosure: This Individual Assignment 7 is purely made by myself without copy-paste from AI. But, I still use AI for new knowledge/information.
 
-## Getting Started
+Link : https://claude.ai/share/05885cf4-4e12-4d7c-9cd5-f797cf4cbb0e (Claude AI Sonnet 5.5 Medium)
 
-This project is a starting point for a Flutter application.
+1. Di Flutter, hampir semuanya adalah widget: teks, tombol, padding, bahkan layar. Widget-widget itu disusun bertingkat seperti pohon, dan itulah yang disebut widget tree.
+Widget paling atas jadi akar (root), lalu di dalamnya ada widget lain yang jadi anaknya. Widget yang membungkus disebut parent, yang dibungkus disebut child.
+Hubungan ini penting karena parent menentukan batas ukuran dan posisi child, sedangkan data dan tema diturunkan dari parent ke child. Kalau parent berubah dan dibangun ulang, child-nya ikut diproses ulang.
 
-A few resources to get you started if this is your first Flutter project:
+2. Widget yang saya gunakan dalam mobile app porto ini,
+- MaterialApp: pembungkus utama aplikasi, mengatur tema, judul, dan halaman awal.
+- Scaffold: kerangka halaman (app bar, body, bottom navigation, dll).
+- AppBar: bar di bagian atas halaman, biasanya berisi judul.
+- Text: menampilkan tulisan.
+- Image / CircleAvatar: menampilkan gambar atau foto profil.
+- Container: kotak serbaguna untuk atur warna, ukuran, margin, dan dekorasi.
+- Column: menyusun widget ke bawah (vertikal).
+- Row: menyusun widget ke samping (horizontal).
+- Padding: memberi jarak di sekeliling widget.
+- SizedBox: memberi jarak kosong atau mengatur ukuran tetap.
+- Center: menaruh child di tengah.
+- ListView: daftar yang bisa di-scroll (misalnya daftar project atau skill).
+- Card: kotak dengan bayangan, cocok untuk menampilkan item project.
+- Icon: menampilkan ikon.
+- ElevatedButton / TextButton / IconButton: tombol yang bisa ditekan.
+- Expanded / Flexible: membagi sisa ruang di dalam Row atau Column.
+- SingleChildScrollView: membuat halaman bisa di-scroll.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+3. MaterialApp adalah widget yang menyiapkan hal-hal dasar aplikasi bergaya material design.
+Alasan dipakai sebagai root: widget seperti Scaffold, AppBar, Navigator, dan Theme butuh “lingkungan” yang disediakan MaterialApp supaya bisa jalan. Karena itu dia ditaruh paling atas, supaya semua widget di bawahnya otomatis dapat tema dan navigasi yang sama.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. 
+- StatelessWidget: tampilannya tetap, tidak punya data yang berubah selama aplikasi jalan. Sekali dibangun, isinya sama terus.
+- StatefulWidget: punya state (data yang bisa berubah). Kalau datanya berubah dan kita panggil setState(), tampilannya ikut diperbarui.
+
+Pilih Stateless kalau tampilannya statis, misalnya halaman profil yang isinya teks dan gambar saja. Pilih Stateful kalau ada yang berubah karena interaksi atau waktu, misalnya tombol ganti tema gelap/terang, counter, isi form, checkbox, atau data yang dimuat dari internet.
+
+5. BuildContext adalah penanda posisi sebuah widget di dalam widget tree. Lewat context ini, widget tahu di mana keberadaannya dan bisa mengambil informasi dari widget di atasnya (parent).
+
+Penggunaannya di dalam build(BuildContext context) untuk mengambil tema, ukuran layar, memindahkan page, dan menampilkan snackbar atau dialog.
+Tanpa context, widget tidak bisa “melihat” ke atas pohonnya untuk mengambil tema, ukuran layar, atau navigasi.
+
+6. 
+- Hot reload: kode yang baru diubah langsung dimasukkan ke aplikasi yang sedang jalan, dalam hitungan detik. State tetap tersimpan, jadi kamu tidak kembali ke awal. Cocok untuk ngubah tampilan, warna, atau teks.
+- Hot restart: aplikasi dijalankan ulang dari awal, jadi state hilang dan semua kembali ke kondisi awal. Tetap lebih cepat daripada build ulang total.
+
+Hot reload saja tidak akan cukup ketika:
+- Mengubah nilai variabel global atau static yang sudah terlanjur diinisialisasi
+- Mengubah isi main() atau initState() (karena hanya jalan sekali di awal)
+- Mengubah StatelessWidget jadi StatefulWidget (atau sebaliknya)
+- Mengubah enum atau tipe data tertentu
+
+Kita harus hot restar atau full restart ketika:
+- Menambah atau mengubah dependency di pubspec.yaml
+- Menambah aset baru seperti gambar atau font
+- Mengubah kode native (Android/iOS), izin di AndroidManifest.xml, atau konfigurasi Gradle
+- Menambah plugin yang punya kode native
