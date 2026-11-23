@@ -135,6 +135,12 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                       _technologies = value!;
                     });
                   },
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Teknologi proyek tidak boleh kosong!";
+                    }
+                    return null;
+                  },
                 ),
               ),
 
@@ -153,6 +159,18 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                     setState(() {
                       _projectLink = value!;
                     });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return null; // optional
+                    }
+                    final uri = Uri.tryParse(value.trim());
+                    if (uri == null ||
+                        !(uri.scheme == 'http' || uri.scheme == 'https') ||
+                        uri.host.isEmpty) {
+                      return "Tautan harus diawali 'http://' atau 'https://'";
+                    }
+                    return null;
                   },
                 ),
               ),
