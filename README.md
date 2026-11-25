@@ -60,6 +60,9 @@ Kita harus hot restar atau full restart ketika:
 
 
 ## Tugas 8
+AI Disclosure: This Individual Assignment 8 is not purely made by myself. For more information, please click the link below.
+
+Link : https://claude.ai/share/6198987e-2533-45bc-9784-947f390f2269 (Claude AI Sonnet 5.5 Medium)
 
 1.
 - Navigator.push() berfungsi menumpuk halaman baru di atas halaman aktif sehingga pengguna masih bisa kembali ke halaman sebelumnya. 
